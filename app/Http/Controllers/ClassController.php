@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-class PresenceController extends Controller
+class ClassController extends Controller
 {
     //
 }

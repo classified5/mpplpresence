@@ -212,7 +212,7 @@
     
        
 
-      <div class="tab-content">
+      <!-- <div class="tab-content">
         @if (\Session::has('success'))
         <div class="callout callout-success">
           <h4>Sukses!!</h4>
@@ -233,7 +233,7 @@
           <p>User Not Found</p>
         </div>
 
-        @endif
+        @endif -->
 
 
       

@@ -29,16 +29,23 @@
 
         <!-- Sidebar Menu -->
         <ul class="sidebar-menu">
-        @if (Auth::user()->ID_ROLE === 1 || Auth::user()->ID_ROLE === 2 || Auth::user()->ID_ROLE === 3)
+       
             <li><a href="{{ url('/') }}"> <i class = "fa  fa-home"></i><span>Home</span></a></li>
-        @endif
+        
             <!-- Optionally, you can add icons to the links -->
-        @if (Auth::user()->ID_ROLE === 1 || Auth::user()->ID_ROLE === 2 || Auth::user()->ID_ROLE === 3)
-            <li><a href="{{url('/presence') }}"><i class = "fa  fa-check-square"> </i><span>Presence</span></a></li>
-        @endif
-        @if (Auth::user()->ID_ROLE === 3)
-            <li><a href={{url('/user') }}><i class="fa fa-user"></i><span>User</span></a></li>
-        @endif
+        
+            <li><a href="{{url('/input_presence') }}"><i class = "fa  fa-check-square"> </i><span>Input Presensi</span></a></li>
+        
+            <li><a href={{url('/report_presence') }}><i class="fa fa-user"></i><span>Laporan Presensi (Tabel)</span></a></li>
+
+            <li><a href={{url('/report_presence_graph') }}><i class="fa fa-user"></i><span>Laporan Presensi (Grafik)</span></a></li>
+
+            <li><a href={{url('/adduser') }}><i class="fa fa-user"></i><span>Add User</span></a></li>
+
+            <li><a href={{url('/edituser') }}><i class="fa fa-user"></i><span>Edit User</span></a></li>
+
+            <li><a href={{url('/deleteuser') }}><i class="fa fa-user"></i><span>Delete User</span></a></li>
+        
             <!-- <li class="treeview">
                 <a href="#"><span>Scanner</span> <i class="fa fa-angle-left pull-right"></i></a>
                 <ul class="treeview-menu">
@@ -47,8 +54,8 @@
                 </ul>
             </li> -->
 
-            <li><a href="{{url('/scanner') }}"><i class ="fa fa-credit-card"></i><span>Scanner</span></a></li>
-            <li><a href="{{url('/schedule') }}"><i class="fa fa-calendar"></i><span>Schedule</span></a></li>
+            <!-- <li><a href="{{url('/scanner') }}"><i class ="fa fa-credit-card"></i><span>Profil</span></a></li> -->
+            <!-- <li><a href="{{url('/schedule') }}"><i class="fa fa-calendar"></i><span>Schedule</span></a></li> -->
 
         </ul><!-- /.sidebar-menu -->
     </section>

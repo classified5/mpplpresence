@@ -1,20 +1,20 @@
 <!-- Main Header -->
 
 <?php  
-if (Auth::user()->ID_ROLE === 1) {
-    $role = 'mahasiswa';
-}
-elseif (Auth::user()->ID_ROLE === 2) {
-    $role = 'dosen';
-}
-elseif (Auth::user()->ID_ROLE === 3) {
-    $role = 'admin';
-}
+// if (Auth::user()->ID_ROLE === 1) {
+//     $role = 'mahasiswa';
+// }
+// elseif (Auth::user()->ID_ROLE === 2) {
+//     $role = 'dosen';
+// }
+// elseif (Auth::user()->ID_ROLE === 3) {
+//     $role = 'admin';
+// }
 ?>
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo"><b>Presence.</b>if.its.ac.id<br>{{$role}}</a>
+    <a href="index2.html" class="logo"><b>Presence.</b>if.its.ac.id<br></a>
 
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">
@@ -125,7 +125,7 @@ elseif (Auth::user()->ID_ROLE === 3) {
                         <!-- The user image in the navbar-->
                         
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                        <span class="hidden-xs">Welcome, {{Auth::user()->NAMA}}</span>
+                        <span class="hidden-xs">Welcome, </span>
                     </a>
                     <ul class="dropdown-menu" style="left: 0px; background-color: transparent !important;">
                         <!-- The user image in the menu -->
