@@ -12,98 +12,52 @@ class CreateUsersTable extends Migration
      */
     public function up()
     {
-        Schema::create('USER', function (Blueprint $table){
-            $table->string('ID_USER');
-            $table->integer('ID_ROLE');
-            $table->string('NAMA');
-            $table->string('ALAMAT');
-            $table->string('PASSWORD');
-            $table->rememberToken();
-            $table->softDeletes();
-            $table->timestamps();
+        Schema::create('Admin', function (Blueprint $table){
+            $table->increments('id_admin');
+            $table->string('username_admin');
+            $table->string('nama_admin');
+            $table->string('pass_admin');
         });
 
-        Schema::create('USER_CLASS', function (Blueprint $table){
-            $table->increments('ID_UC');
-            $table->string('ID_USER');
-            $table->integer('ID_KELAS');
-            $table->timestamps();
-            $table->softDeletes();
+        Schema::create('Kelas', function (Blueprint $table){
+            $table->increments('id_kelas');
+            $table->integer('id_admin');
+            $table->string('nama_kelas');
         });
 
-        Schema::create('KELAS', function (Blueprint $table){
-            $table->increments('ID_KELAS');
-            $table->string('NAMA_KELAS', 20);
-            $table->string('KODE_MK',10);
-            $table->integer('MAX');
-            $table->integer('COUNT');
-            $table->string('TAHUN_AJARAN', 4);
-            $table->integer('SEMESTER');
-            $table->timestamps();
-            $table->softDeletes();
+        // Schema::create('Matakuliah', function (Blueprint $table){
+        //     $table->string('kode_matkul');
+        //     $table->integer('id_kelas');
+        //     $table->string('nama_matkul');
+        //     $table->timestamps('waktu_mulai_kuliah');
+        //     $table->timestamps('waktu_selesai_kuliah');
+        // });
+
+        Schema::create('Mengambil', function (Blueprint $table){
+            $table->string('kode_matkul');
+            $table->string('NRP');
+            $table->integer('minggu');
+            $table->integer('status_absen');
         });
 
-        Schema::create('PRESENCE', function (Blueprint $table){
-            $table->increments('ID_PRESENCE');
-            $table->string('ID_USER');
-            $table->integer('ID_TYPE');
-            $table->integer('ID_DETAIL_SCHEDULE');
-            $table->timestamps();
-            $table->softDeletes();
+        Schema::create('Mahasiswa', function (Blueprint $table){
+            $table->string('NRP');
+            $table->string('nama_mhs');
+            $table->string('pass_mhs');
         });
 
-        Schema::create('SCHEDULE', function (Blueprint $table){
-            $table->increments('ID_SCHEDULE');
-            $table->integer('ID_KELAS');
-            $table->string('ID_DOSEN');
-            $table->string('ID_ASDOS');
-            $table->timestamps();
-            $table->softDeletes();
+        Schema::create('Mengajar', function (Blueprint $table){
+            $table->string('NIP');
+            $table->string('kode_matkul');
         });
 
-        Schema::create('ROLE', function (Blueprint $table){
-            $table->increments('ID_ROLE');
-            $table->string('NAMA_ROLE', 100);
-            $table->string('DESC', 100);
-            $table->timestamps();
-            $table->softDeletes();
+        Schema::create('Dosen', function (Blueprint $table){
+            $table->string('NIP');
+            $table->string('nama_dosen');
+            $table->string('pass_dosen');
         });
 
-        Schema::create('TYPE_PRESENCE', function (Blueprint $table){
-            $table->increments('ID_TYPE');
-            $table->string('NAME_TYPE', 100);
-            $table->string('DESC', 100);
-            $table->timestamps();
-            $table->softDeletes();
-        });
-
-        Schema::create('SCANNER', function (Blueprint $table){
-            $table->increments('ID_SCANNER');
-            $table->string('NAME_SCANNER', 15);
-            $table->timestamps();
-            $table->softDeletes();
-        });
-
-        Schema::create('ROOM', function (Blueprint $table){
-            $table->increments('ID_ROOM');
-            $table->integer('ID_SCANNER');
-            $table->string('NAMA_ROOM', 10);
-            $table->timestamps();
-            $table->softDeletes();
-        });
-
-        Schema::create('DETAIL_SCHEDULE', function (Blueprint $table){
-            $table->increments('ID_DETAIL_SCHEDULE');
-            $table->integer('ID_SCHEDULE');
-            $table->integer('ID_ROOM');
-            $table->time('START_HOUR');
-            $table->time('END_HOUR');
-            $table->date('KELAS_DATE');
-            $table->boolean('IS_ACTIVE');
-            $table->timestamps();
-            $table->softDeletes();
-        });
-
+      
 
     }
 
@@ -114,16 +68,12 @@ class CreateUsersTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('USER');
-        Schema::dropIfExists('USER_CLASS');
-        Schema::dropIfExists('KELAS');
-        Schema::dropIfExists('PRESENCE');
-        Schema::dropIfExists('ROLE');
-        Schema::dropIfExists('TYPE_PRESENCE');
-        Schema::dropIfExists('SCHEDULE');
-
-        Schema::dropIfExists('SCANNER');
-        Schema::dropIfExists('ROOM');
-        Schema::dropIfExists('DETAIL_SCHEDULE');
+        Schema::dropIfExists('Admin');
+        Schema::dropIfExists('Kelas');
+        Schema::dropIfExists('Mata_Kuliah');
+        Schema::dropIfExists('Mengambil');
+        Schema::dropIfExists('Mahasiswa');
+        Schema::dropIfExists('Mengajar');
+        Schema::dropIfExists('Dosen');
     }
 }

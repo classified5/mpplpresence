@@ -4,14 +4,18 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Kelas extends Model
+class Admin extends Model
 {
-    protected $table = 'Kelas';
+    //
+    protected $table = 'Admin';
     protected $primaryKey = 'id_admin';
     public $incrementing = true;
 
   	protected $fillable = [
-  		'id_admin',
-  		'nama_kelas',
+  		'username_admin',
+  		'nama_admin',
+  		'pass_admin'
   	];
+
+  	
 }
