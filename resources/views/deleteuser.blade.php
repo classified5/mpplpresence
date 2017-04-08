@@ -16,9 +16,9 @@
                   <label for="exampleInputEmail1">Username</label>
                   <input type="text" class="form-control" id="exampleInputEmail1" placeholder="Enter email">
                 </div>
-                <div class="form-group">
+                <div class="form-group">#911818
                   <label for="exampleInputPassword1">Nama</label>
-                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Password">
+                  <input type="text" class="form-control" id="exampleInputPassword1" placeholder="Enter Name">
                 </div>
                 <div class="form-group">
                   <label for="exampleInputPassword1">Password</label>

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Matakuliah extends Model
 {
-    protected $table = 'Matakuliah';
+    protected $table = 'Mata_Kuliah';
     protected $primaryKey = 'kode_matkul';
     public $incrementing = false;
 
@@ -16,5 +16,11 @@ class Matakuliah extends Model
   		'nama_matkul',
   		'waktu_mulai_kuliah',
   		'waktu_selesai_kuliah'
+      'hari',
+      'semester'
   	];
+
+    public function user(){
+      return $this->belongsTo('Kelas');
+    }
 }

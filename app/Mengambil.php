@@ -11,8 +11,8 @@ class Mengambil extends Model
     public $incrementing = false;
 
   	protected $fillable = [
-  		'NRP',
-  		'kode_matkul',
+  		'id_user',
+  		'id_kelas',
   		'minggu',
   		'status_absen'
   		

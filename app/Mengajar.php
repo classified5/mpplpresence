@@ -10,8 +10,12 @@ class Mengajar extends Model
     public $incrementing = false;
 
   	protected $fillable = [
-  		'NIP',
-  		'kode_matkul',
+  		'id_user1',
+  		'id_kelas',
+  		'tanggal',
+  		'jam_masuk',
+  		'jam_keluar',
+  		'deskripsi_perkuliahan'
   		
   	];
 }

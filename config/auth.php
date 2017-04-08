@@ -67,10 +67,8 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\Admin::class, 
-            'model' => App\Dosen::class, 
-            'model' => App\Mahasiswa::class,
-
+            'model' => App\User::class, 
+           
         ],
 
         // 'users' => [
