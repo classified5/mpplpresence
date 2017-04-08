@@ -8,11 +8,13 @@ class Mengambil extends Model
 {
     //
     protected $table = 'Mengambil';
-    public $incrementing = false;
+    protected $primaryKey = 'id_mengambil';
+    public $incrementing = true;
+    public $timestamps = false;
 
   	protected $fillable = [
-  		'id_user',
-  		'id_kelas',
+      'id_user',
+  		'kode',
   		'minggu',
   		'status_absen'
   		

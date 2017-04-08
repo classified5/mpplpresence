@@ -26,8 +26,9 @@ class CreateUsersTable extends Migration
         });
 
         Schema::create('Mengajar', function (Blueprint $table){
+            $table->increments('id_mengajar');
             $table->string('id_user');
-            $table->integer('id_kelas');
+            $table->string('kode');
             $table->date('tanggal');
             $table->time('jam_masuk');
             $table->time('jam_keluar');
@@ -36,8 +37,9 @@ class CreateUsersTable extends Migration
 
 
         Schema::create('Mengambil', function (Blueprint $table){
+            $table->increments('id_mengambil');
             $table->string('id_user');
-            $table->integer('id_kelas');
+            $table->string('kode');
             $table->integer('minggu');
             $table->integer('status_absen');
         });

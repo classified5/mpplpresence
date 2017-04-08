@@ -7,11 +7,14 @@ use Illuminate\Database\Eloquent\Model;
 class Kelas extends Model
 {
     protected $table = 'Kelas';
-    protected $primaryKey = 'id_admin';
+    protected $primaryKey = 'id_kelas';
     public $incrementing = true;
 
   	protected $fillable = [
-  		'id_admin',
   		'nama_kelas',
   	];
+
+  	public function user(){
+  		return $this->hasMany('Matakuliah');
+  	}
 }

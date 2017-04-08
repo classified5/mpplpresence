@@ -12,8 +12,6 @@
 */
 
 Route::get('/', function () {
-    // if(Auth::check()) return view('home');
-    // else return view('login');
     return view('home');
 });
 
@@ -53,6 +51,8 @@ Route::get('/edituser', function (){
 Route::get('/deleteuser', function (){
     return view('deleteuser');
 });
+
+Route::get('/pilih_kelas', 'ClassController@GetClass');
 
 // Route::get('/detail_schedule', function () {
 //     return view('detail_schedule');

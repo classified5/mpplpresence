@@ -7,11 +7,12 @@ use Illuminate\Database\Eloquent\Model;
 class Mengajar extends Model
 {
    	protected $table = 'Mengajar';
-    public $incrementing = false;
+   	protected $primaryKey = 'id_mengajar'
+    public $incrementing = true;
 
   	protected $fillable = [
-  		'id_user1',
-  		'id_kelas',
+  		'id_user',
+  		'kode',
   		'tanggal',
   		'jam_masuk',
   		'jam_keluar',

@@ -15,7 +15,7 @@ class Matakuliah extends Model
   		'id_kelas',
   		'nama_matkul',
   		'waktu_mulai_kuliah',
-  		'waktu_selesai_kuliah'
+  		'waktu_selesai_kuliah',
       'hari',
       'semester'
   	];
