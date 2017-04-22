@@ -19,4 +19,13 @@ class Mengambil extends Model
   		'status_absen'
   		
   	];
+
+    public function user(){
+      return $this->belongsTo('User');
+    }
+
+    public function matakuliah(){
+      return $this->belongsTo('Matakuliah');
+    }
+
 }

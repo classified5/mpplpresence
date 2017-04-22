@@ -9,6 +9,7 @@ class Kelas extends Model
     protected $table = 'Kelas';
     protected $primaryKey = 'id_kelas';
     public $incrementing = true;
+    public $timestamps = false;
 
   	protected $fillable = [
   		'nama_kelas',

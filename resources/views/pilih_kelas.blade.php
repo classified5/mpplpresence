@@ -3,6 +3,7 @@
 @section('content')
 
 <div class="box box-default">
+        <form action="{{ url('/report_presence') }}" method="get">
         <div class="box-header with-border">
           <h3 class="box-title">Pemilihan Kelas</h3>
 
@@ -15,12 +16,13 @@
         <div class="box-body">
           <div class="row">
             <div class="col-md-12">
-
+  
               <div class="form-group">
+             
                 <label>Kelas</label>
-                <select class="form-control select2" style="width: 100%;">
+                <select class="form-control select2" style="width: 100%;" name="idkelas">
                     @foreach ($class as $key)
-                    <option>{{ $key->nama_matkul }}</option>
+                    <option value="{{ $key->kode }}">{{ $key->nama_matkul }}</option>
                     @endforeach
                 </select>
               </div>
@@ -38,9 +40,11 @@
         <div class="box-footer">
          
         </div>
-        <a href="{{ url('/report_presence_graph') }}">
-        <button type="button" class="btn btn-block btn-success">Next</button>
-        </a>
+        
+        <input type="submit" value="Next"  class="btn btn-block btn-success"></input>
+        
+
+      </form>
       </div>
 
 
