@@ -35,9 +35,18 @@
               <td>{{$row->nama}}</td>
               <td>{{$row->password}}</td>
               <td>
-                
+                  <form method="post" action="edituser">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="id_user" value="{{$row->id_user}}">
+                    <button type="submit" class="btn btn-primary">Edit</button>
+                  </form>
               </td>
-              <td>Delete</td>
+              <td><form method="post" action="deleteuser">
+                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    <input type="hidden" name="id_user" value="{{$row->id_user}}">
+                    <button type="submit" class="btn btn-primary">Delete</button>
+                  </form>
+              </td>
             </tr>
             @endforeach
           </tbody>

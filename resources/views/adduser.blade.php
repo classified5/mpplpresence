@@ -31,7 +31,7 @@
                     <option value="" disabled selected>Pilih role</option>
                     <option value="1">Dosen</option>
                     <option value="2">Mahasiswa</option>
-                    <option value="2">Admin</option>
+                    <option value="3">Admin</option>
                   </select>
                   
               <!-- /.box-body -->

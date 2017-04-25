@@ -44,5 +44,6 @@ Route::get('/pilih_kelas', ['as' => 'pilihkelas', 'uses' => 'ClassController@get
 
 Route::post('/adduser', 'AccountController@CreateAccount');
 Route::post('/edituser', 'AccountController@EditAccount');
+Route::post('/edituserYes', 'AccountController@EditAccountYes');
 Route::post('/deleteuser','AccountController@DeleteAccount');
 Route::get('/account-manager', 'AccountController@ListAccount');
