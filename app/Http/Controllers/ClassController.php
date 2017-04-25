@@ -13,7 +13,7 @@ use App\Matakuliah;
 class ClassController extends Controller
 {
     //
-	public function GetClass()
+	public function getClass()
 	 {
 	 	$class = Matakuliah::all();
 

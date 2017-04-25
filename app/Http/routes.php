@@ -11,46 +11,55 @@
 |
 */
 
-Route::get('/', function () {
+Route::get('/', ['as' => 'home', function (){
     return view('home');
-});
+}]);
 
 
-Route::get('/login', function () {
+// Route::get('/tentang-kami', ['as' => 'front.tentang-kami', function(){
+//         return view('front.home.tentang-kami');
+//     }]);
+
+// Route::get('/login', ['as' => 'front.login', 'uses' => 'AuthController@showLoginForm']);
+
+
+Route::get('/login', ['as' => 'login', function () {
     return view('login');
-});
+}]);
 
-Route::post('/login', 'UserController@LoginValidation');
 
-Route::get('/logout', 'UserController@logout');
 
-Route::get('/input_presence', function() {
+Route::post('/login', ['as' => 'login.post', 'uses' => 'UserController@loginValidation']);
+
+Route::get('/logout', ['as' => 'logout', 'uses' => 'UserController@logout']);
+
+Route::get('/input_presence', ['as' => 'inputpresence', function() {
     return view('input_presence');
-});
+}]);
 
-Route::get('/detail_presence', function (){
+Route::get('/detail_presence', ['as' => 'detailpresence', function(){
     return view('detail_presence');
-});
+}]);
 
-Route::get('/report_presence', 'PresenceController@GetPresence');
+Route::get('/report_presence', ['as' => 'reportpresence', 'uses' => 'PresenceController@getPresence']);
 
-Route::get('/report_presence_graph', function (){
+Route::get('/report_presence_graph', ['as' => 'reportpresencegraph',function (){
     return view('report_presence_graph');
-});
+}]);
 
-Route::get('/adduser', function (){
+Route::get('/adduser', ['as' => 'adduser', function (){
     return view('adduser');
-});
+}]);
 
-Route::get('/edituser', function (){
+Route::get('/edituser', ['as' => 'edituser', function (){
     return view('edituser');
-});
+}]);
 
-Route::get('/deleteuser', function (){
+Route::get('/deleteuser', ['as' => 'deleteuser', function (){
     return view('deleteuser');
-});
+}]);
 
-Route::get('/pilih_kelas', 'ClassController@GetClass');
+Route::get('/pilih_kelas', ['as' => 'pilihkelas', 'uses' => 'ClassController@getClass']);
 
 
 
