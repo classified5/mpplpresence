@@ -41,3 +41,8 @@ Route::get('/deleteuser', ['as' => 'deleteuser', function (){
     return view('deleteuser');
 }]);
 Route::get('/pilih_kelas', ['as' => 'pilihkelas', 'uses' => 'ClassController@getClass']);
+
+Route::post('/adduser', 'AccountController@CreateAccount');
+Route::post('/edituser', 'AccountController@EditAccount');
+Route::post('/deleteuser','AccountController@DeleteAccount');
+Route::get('/account-manager', 'AccountController@ListAccount');
