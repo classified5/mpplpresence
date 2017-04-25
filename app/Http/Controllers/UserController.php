@@ -15,7 +15,7 @@ use Illuminate\Support\Facades\Input;
 class UserController extends Controller
 {
     //
-	public function LoginValidation(){
+	public function loginValidation(){
 
 		$user = Input::get('username');
 		$pass = Input::get('password');
@@ -33,6 +33,11 @@ class UserController extends Controller
 
 
 
+	}
+
+	public function logout(){
+		Auth::logout();
+        return Redirect::to('/login');
 	}
 
 }

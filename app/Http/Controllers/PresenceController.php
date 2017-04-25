@@ -12,7 +12,7 @@ use App\Http\Requests;
 class PresenceController extends Controller
 {
     //
-    public function GetPresence(){
+    public function getPresence(){
 
     	$idkelas = Input::get('idkelas');
     	//dd($idkelas);
