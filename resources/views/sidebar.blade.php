@@ -40,11 +40,11 @@
 
             <li><a href={{url('/report_presence_graph') }}><i class="fa fa-user"></i><span>Laporan Presensi (Grafik)</span></a></li>
 
-            <li><a href={{url('/adduser') }}><i class="fa fa-user"></i><span>Add User</span></a></li>
+            <li><a href={{url('/account-manager') }}><i class="fa fa-user"></i><span>Account Manager</span></a></li>
 
-            <li><a href={{url('/edituser') }}><i class="fa fa-user"></i><span>Edit User</span></a></li>
+<!--             <li><a href={{url('/edituser') }}><i class="fa fa-user"></i><span>Edit User</span></a></li>
 
-            <li><a href={{url('/deleteuser') }}><i class="fa fa-user"></i><span>Delete User</span></a></li>
+            <li><a href={{url('/deleteuser') }}><i class="fa fa-user"></i><span>Delete User</span></a></li> -->
         
             <!-- <li class="treeview">
                 <a href="#"><span>Scanner</span> <i class="fa fa-angle-left pull-right"></i></a>
