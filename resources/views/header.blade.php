@@ -125,7 +125,7 @@
                         <!-- The user image in the navbar-->
                         
                         <!-- hidden-xs hides the username on small devices so only the image appears. -->
-                        <span class="hidden-xs">Welcome, </span>
+                        <span class="hidden-xs">Welcome, {{Auth::user()->nama}} </span>
                     </a>
                     <ul class="dropdown-menu" style="left: 0px; background-color: transparent !important;">
                         <!-- The user image in the menu -->

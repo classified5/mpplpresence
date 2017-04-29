@@ -23,6 +23,7 @@ class CreateUsersTable extends Migration
             $table->integer('id_role');
             $table->string('nama');
             $table->string('password');
+            $table->string('remember_token');
         });
 
         Schema::create('Mengajar', function (Blueprint $table){
