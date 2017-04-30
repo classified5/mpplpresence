@@ -5,8 +5,10 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
 use DB;
+use Auth;
 use App\Mengambil;
 use App\User;
+use App\Mengajar;
 use App\Http\Requests;
 
 class PresenceController extends Controller
@@ -84,5 +86,23 @@ class PresenceController extends Controller
     	
 
     	return view('report_presence', ['nama' => $nama, 'temp' => $temp, 'presence' => $graphpresence, 'absent' => $graphabsent] );
+    }
+
+    public function input_presence(){
+        $this->data['idkelas']= Input::get('idkelas');
+        return view('input_presence', $this->data);
+    }
+
+    public function detail_presence(){
+        $jam_mulai= date('H:i:s', strtotime(Input::get('jam_mulai')));
+        $jam_selesai= date('H:i:s', strtotime(Input::get('jam_selesai')));
+        $tanggal= date('Y-m-d', strtotime(Input::get('tanggal')));
+        $deskripsi= Input::get('deskripsi');
+        $mata_kuliah= Input::get('mata_kuliah');
+        $this->data['idkelas']= Input::get('idkelas');
+        $tabel = DB::insert( DB::raw("INSERT INTO mengajar
+                              VALUES ('','".Auth::user()->id_user."','".$mata_kuliah."','".$tanggal."','".$jam_mulai."','".$jam_selesai."','".$deskripsi."')"));
+        // dd(Auth::user()->id_user);
+        return view('detail_presence', $this->data);
     }
 }

@@ -21,12 +21,8 @@ Route::get('/login', ['as' => 'login', function () {
 }]);
 Route::post('/login', ['as' => 'login.post', 'uses' => 'UserController@loginValidation']);
 Route::get('/logout', ['as' => 'logout', 'uses' => 'UserController@logout']);
-Route::get('/input_presence', ['as' => 'inputpresence', function() {
-    return view('input_presence');
-}]);
-Route::get('/detail_presence', ['as' => 'detailpresence', function(){
-    return view('detail_presence');
-}]);
+Route::get('/input_presence', ['as' => 'inputpresence',  'uses' => 'PresenceController@input_presence']);
+Route::post('/detail_presence', ['as' => 'detailpresence', 'uses' => 'PresenceController@detail_presence']);
 Route::get('/report_presence', ['as' => 'reportpresence', 'uses' => 'PresenceController@getPresence']);
 Route::get('/report_presence_graph', ['as' => 'reportpresencegraph',function (){
     return view('report_presence_graph');
