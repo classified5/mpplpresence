@@ -49,8 +49,7 @@ class AccountController extends Controller
     	$nama = Input::get('nama');
     	$password = Input::get('password');
     	$role = Input::get('role');
-    	$tabel = DB::update( DB::raw("UPDATE user set id_user='".$id."', 
-    		id_role='".$role."', nama='".$nama."', password='".$password."' WHERE id_user='".$id_temp."'"));
+    	$tabel = DB::update( DB::raw("UPDATE user set id_user='".$id."', id_role='".$role."', nama='".$nama."', password='".$password."' WHERE id_user='".$id_temp."'"));
     	return redirect('account-manager');
     }
 }

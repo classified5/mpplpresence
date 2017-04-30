@@ -41,7 +41,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
     <script src="https://oss.maxcdn.com/libs/respond.js/1.3.0/respond.min.js"></script>
     <![endif]-->
 
-    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js" type="text/javascript"></script>
+    <script src="{{ asset ("/bower_components/jquery.min.js") }}" type="text/javascript"></script>
     
 </head>
 <body class="skin-blue">
@@ -92,7 +92,7 @@ scratch. This page gets rid of all links and provides the needed markup only.
 <script src="{{ asset ("/bower_components/admin-lte/plugins/input-mask/jquery.inputmask.extensions.js") }}" type="text/javascript"></script>
 <!-- AdminLTE App -->
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.11.2/moment.min.js"></script>
+<script src="{{ asset ("/bower_components/moment.min.js") }}"></script>
 <script src="{{ asset ("/bower_components/admin-lte/plugins/daterangepicker/daterangepicker.js") }}"></script>
 <script src="{{ asset ("/bower_components/admin-lte/plugins/datepicker/bootstrap-datepicker.js") }}"></script>
 <script src="{{ asset ("/bower_components/admin-lte/plugins/colorpicker/bootstrap-colorpicker.min.js") }}"></script>

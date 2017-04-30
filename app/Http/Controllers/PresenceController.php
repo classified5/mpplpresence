@@ -99,10 +99,33 @@ class PresenceController extends Controller
         $tanggal= date('Y-m-d', strtotime(Input::get('tanggal')));
         $deskripsi= Input::get('deskripsi');
         $mata_kuliah= Input::get('mata_kuliah');
-        $this->data['idkelas']= Input::get('idkelas');
-        $tabel = DB::insert( DB::raw("INSERT INTO mengajar
-                              VALUES ('','".Auth::user()->id_user."','".$mata_kuliah."','".$tanggal."','".$jam_mulai."','".$jam_selesai."','".$deskripsi."')"));
+        $minggu= Input::get('minggu');
+        // $tabel = DB::insert( DB::raw("INSERT INTO mengajar VALUES ('','".Auth::user()->id_user."','".$mata_kuliah."','".$tanggal."','".$jam_mulai."','".$jam_selesai."','".$deskripsi."')"));
         // dd(Auth::user()->id_user);
+
+        $tabel = DB::select( DB::raw("SELECT m.*, u.nama FROM mengambil m, user u WHERE m.kode='".$mata_kuliah."' and m.minggu='".$minggu."' and u.id_user=m.id_user"));
+        $this->data['user']=$tabel;
+        $this->data['minggu']=$minggu;
+        // dd($tabel);
+
+        return view('detail_presence', $this->data);
+    }
+
+    public function submit_presence(){
+        $count= Input::get('count');
+        for ($i=1; $i <=$count ; $i++) { 
+            $id_mengambil= Input::get('id_mengambil'.$i.'');
+            $status_absen= Input::get('status'.$i.'');
+            $tabel = DB::update( DB::raw("UPDATE mengambil set status_absen='".$status_absen."' WHERE id_mengambil='".$id_mengambil."'"));
+        }
+        
+        $mata_kuliah= Input::get('mata_kuliah');
+        $minggu= Input::get('minggu');
+        $tabel = DB::select( DB::raw("SELECT m.*, u.nama FROM mengambil m, user u WHERE m.kode='".$mata_kuliah."' and m.minggu='".$minggu."' and u.id_user=m.id_user"));
+        $this->data['user']=$tabel;
+        $this->data['minggu']=$minggu;
+        $this->data['success']=true;
+        \Session::flash('info','Success');
         return view('detail_presence', $this->data);
     }
 }

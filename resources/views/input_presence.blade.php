@@ -28,6 +28,17 @@
           </div>
         </div>
       </div>
+      <div class="col-md-12">
+        <div class="form-group">
+          <label>Minggu</label>
+          <select class="form-control" style="width: 100%;" name="minggu" required>
+            <option value="" disabled selected>Pilih minggu ke ...</option>
+            @for ($i = 1; $i < 17; $i++)
+            <option value="{{$i}}">{{$i}}</option>
+            @endfor
+          </select>
+        </div>
+      </div>
       <!-- /.col -->
       <div class="col-md-6">
         <div class="bootstrap-timepicker">
