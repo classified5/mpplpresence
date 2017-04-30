@@ -40,7 +40,7 @@ Route::get('/edituser', ['as' => 'edituser', function (){
 Route::get('/deleteuser', ['as' => 'deleteuser', function (){
     return view('deleteuser');
 }]);
-Route::get('/pilih_kelas', ['as' => 'pilihkelas', 'uses' => 'ClassController@getClass']);
+Route::get('/pilih_kelas/{id}', ['as' => 'pilihkelas', 'uses' => 'ClassController@getClass']);
 
 Route::post('/adduser', 'AccountController@CreateAccount');
 Route::post('/edituser', 'AccountController@EditAccount');
