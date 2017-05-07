@@ -13,11 +13,12 @@ use App\Matakuliah;
 class ClassController extends Controller
 {
     //
-	public function getClass()
+	public function getClass($id)
 	 {
 	 	$class = Matakuliah::all();
-
-	 	return view('pilih_kelas', ['class' => $class] );
+	 	$this->data['class']=$class;
+	 	$this->data['id']=$id;
+	 	return view('pilih_kelas', $this->data );
 
 	 } 
 

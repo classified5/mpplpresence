@@ -11,7 +11,7 @@
             <!-- /.box-header -->
             <!-- form start -->
             <form action="edituserYes" method="post" role="form">
-              <input type="hidden" name="_token" value="{{ csrf_token() }}">
+              {{ csrf_field() }}
               <div class="box-body">
                 @foreach ($user as $row)
                 <input type="hidden" name="id_user" value="{{$row->id_user}}">

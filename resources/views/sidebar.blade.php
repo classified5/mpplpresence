@@ -34,9 +34,9 @@
         
             <!-- Optionally, you can add icons to the links -->
         
-            <li><a href="{{ route('inputpresence') }}"><i class = "fa  fa-check-square"> </i><span>Input Presensi</span></a></li>
+            <li><a href="{{ route('pilihkelas','input') }}"><i class = "fa  fa-check-square"> </i><span>Input Presensi</span></a></li>
         
-            <li><a href="{{ route('pilihkelas') }}"><i class="fa fa-user"></i><span>Laporan Presensi (Tabel)</span></a></li>
+            <li><a href="{{ route('pilihkelas','report') }}"><i class="fa fa-user"></i><span>Laporan Presensi (Tabel)</span></a></li>
 
             <li><a href="{{ route('reportpresencegraph') }}"><i class="fa fa-user"></i><span>Laporan Presensi (Grafik)</span></a></li>
 

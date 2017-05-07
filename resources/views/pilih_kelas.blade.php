@@ -3,7 +3,11 @@
 @section('content')
 
 <div class="box box-default">
-        <form action="{{ url('/report_presence') }}" method="get">
+@if($id=='report') 
+      <form action="{{ url('/report_presence') }}" method="get">
+@elseif ($id=='input')
+      <form action="{{ url('/input_presence') }}" method="get">
+@endif
         <div class="box-header with-border">
           <h3 class="box-title">Pemilihan Kelas</h3>
 

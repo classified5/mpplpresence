@@ -43,7 +43,7 @@
                   </form>
               </td>
               <td><form method="post" action="deleteuser">
-                    <input type="hidden" name="_token" value="{{ csrf_token() }}">
+                    {{ csrf_field() }}
                     <input type="hidden" name="id_user" value="{{$row->id_user}}">
                     <button type="submit" class="btn btn-primary">Delete</button>
                   </form>
