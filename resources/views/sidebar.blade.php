@@ -41,6 +41,9 @@
             <li><a href="{{ route('reportpresencegraph') }}"><i class="fa fa-user"></i><span>Laporan Presensi (Grafik)</span></a></li>
 
             <li><a href="account-manager"><i class="fa fa-user"></i><span>Account Manager</span></a></li>
+
+
+            <li><a href="{{ route('rekap') }}"><i class="fa fa-user"></i><span>Rekap</span></a></li>
             <!-- <li><a href="{{ route('adduser') }}"><i class="fa fa-user"></i><span>Add User</span></a></li>
 
             <li><a href="{{ route('edituser') }}"><i class="fa fa-user"></i><span>Edit User</span></a></li>
