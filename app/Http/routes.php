@@ -39,6 +39,8 @@ Route::get('/deleteuser', ['as' => 'deleteuser', function (){
 }]);
 Route::get('/pilih_kelas/{id}', ['as' => 'pilihkelas', 'uses' => 'ClassController@getClass']);
 
+Route::get('/rekap', ['as' => 'rekap', 'uses' => 'PresenceController@getRekap']);
+
 Route::post('/adduser', 'AccountController@CreateAccount');
 Route::post('/edituser', 'AccountController@EditAccount');
 Route::post('/edituserYes', 'AccountController@EditAccountYes');
