@@ -42,7 +42,7 @@ class CreateUsersTable extends Migration
             $table->string('id_user');
             $table->string('kode');
             $table->integer('minggu');
-            $table->integer('status_absen');
+            $table->integer('status_absen')->default('1');
         });
 
         Schema::create('Kelas', function (Blueprint $table){

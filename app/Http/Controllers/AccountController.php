@@ -15,17 +15,33 @@ class AccountController extends Controller
     	$nama = Input::get('nama');
     	$password = Input::get('password');
     	$role = Input::get('role');
-    	$tabel = DB::insert( DB::raw("INSERT INTO user
-    						 VALUES ('".$id."','".$role."','".$nama."','".$password."')"));
+    	$tabel = DB::insert( DB::raw("INSERT INTO user VALUES ('".$id."','".$role."','".$nama."','".$password."','')"));
      //    if ($flag==1)
      //    	return redirect('/adduser');
     	// else 
+        // $tanggal_awal = '2017-02-05';
+        // $tanggal_akhir = '2017-04-30';
+        // $detik = 24 * 3600;
+        // $tgl_awal = strtotime($tanggal_awal);
+        // $tgl_akhir = strtotime($tanggal_akhir);
+
+        // $minggu = 0;
+        // for ($i=$tgl_awal; $i < $tgl_akhir; $i += $detik)
+        // {
+        //     if (date('w', $i) == '0'){
+        //         $minggu++;
+        //     }
+        // }
+                
+        // dd($minggu);
     	return redirect('/account-manager');
     }
 
     public function DeleteAccount(){
     	$id_user = Input::get('id_user');
         $tabel = DB::delete( DB::raw("DELETE FROM user WHERE id_user='".$id_user."'"));
+        $tabel = DB::delete( DB::raw("DELETE FROM mengambil WHERE id_user='".$id_user."'"));
+        $tabel = DB::delete( DB::raw("DELETE FROM mengajar WHERE id_user='".$id_user."'"));
     	return redirect('/account-manager');
     }
 
