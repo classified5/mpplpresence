@@ -9,9 +9,7 @@
 | and give it the controller to call when that URI is requested.
 |
 */
-Route::get('/', ['as' => 'home', function (){
-    return view('home');
-}]);
+Route::get('/', ['as' => 'home', 'uses' => 'UserController@home']);
 // Route::get('/tentang-kami', ['as' => 'front.tentang-kami', function(){
 //         return view('front.home.tentang-kami');
 //     }]);
@@ -45,4 +43,4 @@ Route::post('/adduser', 'AccountController@CreateAccount');
 Route::post('/edituser', 'AccountController@EditAccount');
 Route::post('/edituserYes', 'AccountController@EditAccountYes');
 Route::post('/deleteuser','AccountController@DeleteAccount');
-Route::get('/account-manager', 'AccountController@ListAccount');
+Route::get('/account-manager', ['as' => 'account-manager', 'uses' => 'AccountController@ListAccount']);

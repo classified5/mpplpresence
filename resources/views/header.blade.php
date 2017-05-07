@@ -14,7 +14,7 @@
 <header class="main-header">
 
     <!-- Logo -->
-    <a href="index2.html" class="logo"><b>Presence.</b>if.its.ac.id<br></a>
+    <a href="{{ route('home') }}" class="logo"><b>Presence.</b>if.its.ac.id<br></a>
 
     <!-- Header Navbar -->
     <nav class="navbar navbar-static-top" role="navigation">

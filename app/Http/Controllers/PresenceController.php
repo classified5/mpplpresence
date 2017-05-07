@@ -96,6 +96,12 @@ class PresenceController extends Controller
     		$presence[$c] = DB::select(DB::raw("SELECT COUNT(m.status_absen) as 'presence', m.minggu, mk.nama_matkul, m.kode FROM mengambil m, mata_kuliah mk WHERE m.kode = mk.kode and m.kode = '".$kelas[$c]->kode."' and m.status_absen = 1 GROUP BY m.minggu"));
 
     		$absent[$c] = DB::select(DB::raw("SELECT COUNT(m.status_absen) as 'absent', m.minggu, mk.nama_matkul FROM mengambil m, mata_kuliah mk WHERE m.kode = mk.kode and m.kode = '".$kelas[$c]->kode."' and m.status_absen != 1 GROUP BY m.minggu"));
+            if ($presence[$c]==null) {
+                $presence[$c]=[(object)array('presence' => '0', 'kode' => '0', 'nama_matkul' => '0')];
+            }
+            if ($absent[$c]==null) {
+                $absent[$c]=[(object)array('absent' => '0')];
+            }
     		$c++;
     	}
     	// dd($presence, $absent);

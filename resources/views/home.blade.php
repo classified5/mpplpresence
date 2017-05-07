@@ -242,14 +242,14 @@
         
           <div class="small-box bg-green">
             <div class="inner">
-              <h3>5<sup style="font-size: 20px"></sup></h3>
+              <h3>{{session('minggu')}}<sup style="font-size: 20px"></sup></h3>
 
               <p>Week</p>
             </div>
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <!-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
           </div>
         </div>
 
@@ -257,14 +257,14 @@
         
           <div class="small-box bg-aqua">
             <div class="inner">
-              <h3>27/12/2016<sup style="font-size: 20px"></sup></h3>
+              <h3><?php echo date("d M Y");?><sup style="font-size: 20px"></sup></h3>
 
               <p>Date</p>
             </div>
             <div class="icon">
               <i class="ion ion-stats-bars"></i>
             </div>
-            <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a>
+            <!-- <a href="#" class="small-box-footer">More info <i class="fa fa-arrow-circle-right"></i></a> -->
           </div>
         </div>
 
