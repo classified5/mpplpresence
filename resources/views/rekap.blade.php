@@ -13,7 +13,7 @@
                     <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                       <thead>
                         <tr role="row">
-                        <th >KODE KELAS</th>
+                        <th style="width: 7%;">KODE KELAS</th>
                         <th >NAMA KELAS</th>
                         <th >1</th>
                         <th >2</th>
@@ -49,14 +49,15 @@
                   <td>{{$presence[$y][0]->kode}}</td>
                   <td>{{ $presence[$y][0]->nama_matkul }}</td>
                   <?php          
-                     for($i=0; $i<count($presence[$y]); $i++){
-                      $temp = '<td> Hadir: ' . $presence[$y][0]->presence . '<br>Absen: ' . $absent[$y][0]->absent . '</td>';
+                     for($i=0; $i<17; $i++){
+
+                      $temp = '<td> Hadir: ' . $presence[$y][$i]->presence . '<br>Absen: ' . $absent[$y][$i]->absent . '</td>';
                       echo $temp;
                      
                      }           
-                    for($k=$i;$k<=16;$k++){
-                      echo '<td></td>';
-                    } 
+                    // for($k=$i;$k<=16;$k++){
+                    //   echo '<td></td>';
+                    // } 
                   
                   ?>
 

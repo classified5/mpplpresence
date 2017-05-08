@@ -81,46 +81,60 @@ class PresenceController extends Controller
     	$kelas = Matakuliah::select('kode')->get();
     	// dd(count($kelas));
 
-    	for($y=0;$y<count($kelas);$y++){
-	    	for($i=1; $i<=16;$i++){
-	    		
-	    		$presence[$y][$i] = 0;
-	    		$absent[$y][$i] = 0;
-	  
-	    	}
-	    }	
-	   
+    	
     	$c = 0;
     	foreach ($kelas as $key) {
     		
     		$presence[$c] = DB::select(DB::raw("SELECT COUNT(m.status_absen) as 'presence', m.minggu, mk.nama_matkul, m.kode FROM mengambil m, mata_kuliah mk WHERE m.kode = mk.kode and m.kode = '".$kelas[$c]->kode."' and m.status_absen = 1 GROUP BY m.minggu"));
 
-    		$absent[$c] = DB::select(DB::raw("SELECT COUNT(m.status_absen) as 'absent', m.minggu, mk.nama_matkul FROM mengambil m, mata_kuliah mk WHERE m.kode = mk.kode and m.kode = '".$kelas[$c]->kode."' and m.status_absen != 1 GROUP BY m.minggu"));
-            if ($presence[$c]==null) {
-                $presence[$c]=[(object)array('presence' => '0', 'kode' => '0', 'nama_matkul' => '0')];
-            }
-            if ($absent[$c]==null) {
-                $absent[$c]=[(object)array('absent' => '0')];
-            }
+    		// $absent[$c] = DB::select(DB::raw("SELECT COUNT(m.status_absen) as 'absent', m.minggu, mk.nama_matkul FROM mengambil m, mata_kuliah mk WHERE m.kode = mk.kode and m.kode = '".$kelas[$c]->kode."' and m.status_absen != 1 GROUP BY m.minggu"));
+    		
+    		$count[$c] = DB::select(DB::raw("SELECT COUNT(id_user) as 'count' FROM mengambil WHERE kode = '".$kelas[$c]->kode."' GROUP BY minggu"));
+           
     		$c++;
     	}
+    	// dd($presence, $count);
+    	
+    	for ($i=0; $i<count($presence); $i++){
+    		for($y=0; $y<17; $y++){
+    			if (empty($presence[$i][$y])) {
+                // $presence[$i]=[(object)array('presence' => '0', 'kode' => '0', 'nama_matkul' => '0')];
+            		$presence[$i][$y]=(object)array('presence' => '0');
+            		$absent[$i][$y]=(object)array('absent' => '0');
+
+            		
+            	}else{
+            		if($presence[$i][$y]->presence != $count[$i][$y]->count){
+            			// dd($presence[$i][$y]->presence);
+            			$temp = $count[$i][$y]->count-$presence[$i][$y]->presence;
+            			
+            			$absent[$i][$y]=(object)array('absent' => $temp);
+            		}else{
+            			$absent[$i][$y]=(object)array('absent' => '0');
+            		}
+            		
+            	}
+
+            	
+    		}
+    		 
+    	}
+    	// dd($presence,$absent);
+
+    	// for ($i=0; $i<count($absent); $i++){
+    	// 	for($y=0; $y<17; $y++){
+    	// 		if (empty($absent[$i][$y])) {
+     //            // $presence[$i]=[(object)array('presence' => '0', 'kode' => '0', 'nama_matkul' => '0')];
+     //        		$absent[$i][$y]=(object)array('absent' => '0');
+            		
+     //        	}
+            
+    	// 	}
+    		 
+    	// }
+
+    	
     	// dd($presence, $absent);
-    	
-
-    	// dd($presence[0]->nama_matkul, $absent);
-    	// $nama = $presence[0]->nama_matkul;
-    	// $kode = $presence[0]->kode;
-    	
-    	// foreach ($presence as $key) {
-	    // 	//dd($key->minggu);
-	    // 	$graphpresence[$key->minggu] = $key->presence;
-
-	    // }
-
-	    // foreach ($absent as $key) {
-	    // 	$graphabsent[$key->minggu] = $key->absent;
-	    // }	
-    	// dd($graphpresence, $graphabsent);
 
     	return view('rekap', [ 'presence' => $presence, 'absent' => $absent] );
 
