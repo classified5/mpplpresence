@@ -39,6 +39,9 @@ Route::get('/pilih_kelas/{id}', ['as' => 'pilihkelas', 'uses' => 'ClassControlle
 
 Route::get('/rekap', ['as' => 'rekap', 'uses' => 'PresenceController@getRekap']);
 
+Route::get('/detail_rekap', ['as' => 'detailrekap', 'uses' => 'PresenceController@detailRekap']);
+
+
 Route::post('/adduser', 'AccountController@CreateAccount');
 Route::post('/edituser', 'AccountController@EditAccount');
 Route::post('/edituserYes', 'AccountController@EditAccountYes');

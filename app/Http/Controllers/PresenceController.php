@@ -76,6 +76,49 @@ class PresenceController extends Controller
     	return view('report_presence', ['nama' => $nama, 'temp' => $temp, 'presence' => $graphpresence, 'absent' => $graphabsent] );
     }
 
+    public function detailRekap(){
+
+    	$idkelas = Input::get('idkelas');
+    	// dd($idkelas);
+    	
+    	for($i = 1; $i <= 16; $i++){
+    		$matakuliah[$i] = DB::select(DB::raw("SELECT m.minggu, m.id_user, m.kode, m.status_absen, mk.nama_matkul, u.nama FROM mengambil m, user u, mata_kuliah mk where u.id_user = m.id_user and m.kode = mk.kode and m.kode = '".$idkelas."' and m.minggu = '".$i."'"));
+    	}
+    
+    	
+    	$nama = $matakuliah[1][0]->nama_matkul;
+    	
+    	for($i=1; $i<=16;$i++){
+    		$y = 1;
+    		$graphpresence[$i] = 0;
+    		$graphabsent[$i] = 0;
+    		
+    		foreach ($matakuliah[$i] as $key) {
+    			$temp[$y][0] = $key->id_user;
+    			$temp[$y][1] = $key->nama;
+    			$temp[$y][$i+1] = $key->status_absen;
+    			$y++;
+    			
+    		}
+    		
+    		
+    		
+    	}
+    	
+    	
+
+    	// $presence = DB::select(DB::raw("SELECT COUNT(m.status_absen) as 'presence', m.minggu, mk.nama_matkul FROM mengambil m, mata_kuliah mk WHERE m.kode = mk.kode and m.kode = '".$idkelas."' and m.status_absen = 1 GROUP BY m.minggu"));
+
+    	// $absent = DB::select(DB::raw("SELECT COUNT(m.status_absen) as 'absent', m.minggu, mk.nama_matkul FROM mengambil m, mata_kuliah mk WHERE m.kode = mk.kode and m.kode = '".$idkelas."' and m.status_absen != 1 GROUP BY m.minggu"));
+
+    	$presence = DB::select(DB::raw("SELECT COUNT(id_user) as presence, id_user FROM mengambil where kode = '".$idkelas."' and status_absen = 1 GROUP by id_user"));
+
+    	$count = DB::select(DB::raw("SELECT COUNT(id_user) as count, id_user FROM mengambil where kode = '".$idkelas."' GROUP by id_user"));
+    	// dd($temp, $presence, $count);
+    	return view('detail_rekap', ['presence' => $presence, 'nama' => $nama, 'temp' => $temp, 'count' => $count ] );
+
+    }
+
     public function getRekap(){
 
     	$kelas = Matakuliah::select('kode')->get();
@@ -87,8 +130,7 @@ class PresenceController extends Controller
     		
     		$presence[$c] = DB::select(DB::raw("SELECT COUNT(m.status_absen) as 'presence', m.minggu, mk.nama_matkul, m.kode FROM mengambil m, mata_kuliah mk WHERE m.kode = mk.kode and m.kode = '".$kelas[$c]->kode."' and m.status_absen = 1 GROUP BY m.minggu"));
 
-    		// $absent[$c] = DB::select(DB::raw("SELECT COUNT(m.status_absen) as 'absent', m.minggu, mk.nama_matkul FROM mengambil m, mata_kuliah mk WHERE m.kode = mk.kode and m.kode = '".$kelas[$c]->kode."' and m.status_absen != 1 GROUP BY m.minggu"));
-    		
+    	
     		$count[$c] = DB::select(DB::raw("SELECT COUNT(id_user) as 'count' FROM mengambil WHERE kode = '".$kelas[$c]->kode."' GROUP BY minggu"));
            
     		$c++;
@@ -121,20 +163,7 @@ class PresenceController extends Controller
     	}
     	// dd($presence,$absent);
 
-    	// for ($i=0; $i<count($absent); $i++){
-    	// 	for($y=0; $y<17; $y++){
-    	// 		if (empty($absent[$i][$y])) {
-     //            // $presence[$i]=[(object)array('presence' => '0', 'kode' => '0', 'nama_matkul' => '0')];
-     //        		$absent[$i][$y]=(object)array('absent' => '0');
-            		
-     //        	}
-            
-    	// 	}
-    		 
-    	// }
-
-    	
-    	// dd($presence, $absent);
+    
 
     	return view('rekap', [ 'presence' => $presence, 'absent' => $absent] );
 
