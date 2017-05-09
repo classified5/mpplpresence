@@ -211,4 +211,44 @@ class PresenceController extends Controller
         return view('detail_presence', $this->data);
 
     }
+
+    public function presenceMahasiswa(){
+    	$nrp = '5114100001';
+
+    	$kelas = DB::select(Db::raw("SELECT m.kode, mk.nama_matkul FROM mengambil m, mata_kuliah mk where m.id_user = '".$nrp."' and m.kode = mk.kode  GROUP BY m.kode "));
+    	
+
+    	for ($i=0; $i < count($kelas) ; $i++) { 
+    		$presence[$i] = DB::select(DB::raw("SELECT COUNT(status_absen) as 'presence' from mengambil where id_user = '".$nrp."' and status_absen = 1 and kode = '".$kelas[$i]->kode."'"));
+    		$absent[$i] = DB::select(DB::raw("SELECT COUNT(status_absen) as 'absent' from mengambil where id_user = '".$nrp."' and status_absen != 1 and kode = '".$kelas[$i]->kode."'"));
+    	}
+
+    	// dd($kelas, $presence, $absent);
+    	
+    	return view('rekap_mahasiswa', [ 'presence' => $presence, 'absent' => $absent, 'kelas' => $kelas] );
+    }
+
+    public function detailPresenceMahasiswa(){
+    	$nrp = '5114100001';
+    	$idkelas = Input::get('idkelas');
+
+    	
+
+    	for($i = 1; $i <= 16; $i++){
+    		$matakuliah[$i] = DB::select(DB::raw("SELECT m.minggu, m.id_user, m.kode, m.status_absen, mk.nama_matkul, u.nama FROM mengambil m, user u, mata_kuliah mk where u.id_user = m.id_user and m.kode = mk.kode and m.kode = '".$idkelas."' and m.minggu = '".$i."' and m.id_user = '".$nrp."'"));
+    	}
+    	for($i = 1; $i <= 18; $i++){
+    		if(empty($matakuliah[$i])) {
+    			$matakuliah[$i] = 0;
+    		}
+    	}
+    	$nama = $matakuliah[1][0]->nama;
+
+    	// dd($matakuliah);	
+    	// dd($matakuliah[1][0]->id_user);
+
+    	return view('detail_rekap_mahasiswa', ['matakuliah' => $matakuliah, 'nama' => $nama, 'nrp' => $nrp]);
+    }
 }
+ 
+             

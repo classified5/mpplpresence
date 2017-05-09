@@ -15,63 +15,35 @@
                         <tr role="row">
                         <th style="width: 7%;">KODE KELAS</th>
                         <th >NAMA KELAS</th>
-                        <th >1</th>
-                        <th >2</th>
-                        <th >3</th>
-                        <th >4</th>
-                        <th >5</th>
-                        <th >6</th>
-                        <th >4</th>
-                        <th >7</th>
-                        <th >8</th>
-                        <th >9</th>
-                        <th >10</th>
-                        <th >11</th>
-                        <th >12</th>
-                        <th >13</th>
-                        <th >14</th>
-                        <th >15</th>
-                        <th >16</th>
+                        <th >Hadir</th>
+                        <th >Absen</th>
+                        
                         <th>Detail</th>
                       </tr>
                     </thead>                
                 <tbody>
                 
                 
+                    @for ($y=0; $y<count($kelas); $y++)
+             
                 
-                 @for ($y=0; $y<count($presence); $y++)
-                @if($presence[$y][0]->kode=='0')
-                    <?php continue;?>
-                 @endif
                 <tr role="row">
                  
                   
 
-                  <td>{{$presence[$y][0]->kode}}</td>
-                  <td>{{ $presence[$y][0]->nama_matkul }}</td>
-                  <?php          
-                     for($i=0; $i<17; $i++){
-
-                      $temp = '<td> Hadir: ' . $presence[$y][$i]->presence . '<br>Absen: ' . $absent[$y][$i]->absent . '</td>';
-                      echo $temp;
-                     
-                     }           
-                    // for($k=$i;$k<=16;$k++){
-                    //   echo '<td></td>';
-                    // } 
-                  
-                  ?>
-
+                  <td>{{$kelas[$y]->kode}}</td>
+                  <td>{{ $kelas[$y]->nama_matkul }}</td>
+                  <td>{{ $presence[$y][0]->presence }}</td>
+                  <td>{{ $absent[$y][0]->absent }}</td>
                 <td>
                   <!-- <a href="{{ url('/detail_rekap') }}"> -->
-                  <form method="get" action="{{ url('/detail_rekap') }}">
-                    <button name="idkelas" value="{{$presence[$y][0]->kode}}" type="submit" class="btn btn-block btn-success">Detail</button>
+                  <form method="get" action="{{ url('/detail_presence_mahasiswa') }}">
+                    <button name="idkelas" value="{{$kelas[$y]->kode}}" type="submit" class="btn btn-block btn-success">Detail</button>
                   </form>
                   <!-- </a> -->
                 </td>  
                 </tr>
-                  @endfor
-                
+                @endfor
                 </tbody>
                 
 

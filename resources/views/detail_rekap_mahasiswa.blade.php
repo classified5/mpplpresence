@@ -4,17 +4,17 @@
 
 <div class="box">
             <div class="box-header">
-             
+              <h3 class="box-title"> Absen Kelas {{$nama}} </h3>
             </div>
             <!-- /.box-header -->
             <div class="box-body">
-               <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
+             <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                   <div class="row col-sm-12">
                     <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
                       <thead>
                         <tr role="row">
-                        <th style="width: 7%;">KODE KELAS</th>
-                        <th >NAMA KELAS</th>
+                        <th >NRP</th>
+                        <th >NAMA</th>
                         <th >1</th>
                         <th >2</th>
                         <th >3</th>
@@ -32,78 +32,53 @@
                         <th >14</th>
                         <th >15</th>
                         <th >16</th>
-                        <th>Detail</th>
                       </tr>
-                    </thead>                
+                    </thead> 
+                
                 <tbody>
                 
-                
-                
-                 @for ($y=0; $y<count($presence); $y++)
-                @if($presence[$y][0]->kode=='0')
-                    <?php continue;?>
-                 @endif
-                <tr role="row">
-                 
+                <tr>
+                <td> {{$nama}}</td>
+                  <td>{{ $nrp }}</td>
+                 @for($i=1; $i<18; $i++)
+                  @if($matakuliah[$i] == 0 )
+                    <?php
+                     echo '<td> </td>';
+                     continue; ?>
+                    @endif
                   
-
-                  <td>{{$presence[$y][0]->kode}}</td>
-                  <td>{{ $presence[$y][0]->nama_matkul }}</td>
                   <?php          
-                     for($i=0; $i<17; $i++){
-
-                      $temp = '<td> Hadir: ' . $presence[$y][$i]->presence . '<br>Absen: ' . $absent[$y][$i]->absent . '</td>';
-                      echo $temp;
-                     
-                     }           
-                    // for($k=$i;$k<=16;$k++){
-                    //   echo '<td></td>';
-                    // } 
+                   
+                      
+                      if($matakuliah[$i][0]->status_absen == 1) echo '<td> Hadir</td>';
+                      else echo '<td> Absen </td>'; 
+                       
+                    
                   
                   ?>
+                   @endfor
 
-                <td>
-                  <!-- <a href="{{ url('/detail_rekap') }}"> -->
-                  <form method="get" action="{{ url('/detail_rekap') }}">
-                    <button name="idkelas" value="{{$presence[$y][0]->kode}}" type="submit" class="btn btn-block btn-success">Detail</button>
-                  </form>
-                  <!-- </a> -->
-                </td>  
-                </tr>
-                  @endfor
+                   </tr>
                 
+                  
                 </tbody>
                 
 
                 <tfoot>
                 
                 </tfoot>
-              </table></div>
+              </table>
+              </div>
+              </div>
 
-              
+
             </div>
             <!-- /.box-body -->
           </div>
 
-</div>
-<!--           <div class="box box-success">
-            <div class="box-header with-border">
-              <h3 class="box-title">Grafik Absen</h3>
 
-              <div class="box-tools pull-right">
-                <button type="button" class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>
-                </button>
-                <button type="button" class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>
-              </div>
-            </div>
-            <div class="box-body">
-              <div class="chart">
-                <canvas id="barChart" style="height: 230px; width: 581px;" height="206" width="522"></canvas>
-              </div>
-            </div> -->
-            <!-- /.box-body
-          </div>
- -->
+        
+
 
 <script>
 $(function () {
@@ -118,8 +93,6 @@ $(function () {
   });
 });
 </script>
-
-
 <script src="{{ asset("/bower_components/admin-lte/plugins/chartjs/Chart.min.js") }}"></script>
 
 <script>
@@ -139,36 +112,6 @@ $(function () {
     // var areaChartCanvas = $("#areaChart").get(0).getContext("2d");
     // // This will get the first returned node in the jQuery collection.
     // var areaChart = new Chart(areaChartCanvas);
-
-    // var areaChartData = {
-    //   labels: ["Minggu 1", "Minggu 2", "Minggu 3", "Minggu 4", "Minggu 5", "Minggu 6", "Minggu 7", "Minggu 8", "Minggu 9", "Minggu 10", "Minggu 11", "Minggu 12", "Minggu 13", "Minggu 14", "Minggu 15", "Minggu 16"],
-      
-
-    //   datasets: [
-    //     {
-    //       label: "Hadir",
-    //       fillColor: "rgba(60,141,188,0.9)",
-    //       strokeColor: "rgba(60,141,188,0.9)",
-    //       pointColor: "rgba(210, 214, 222, 1)",
-    //       pointStrokeColor: "#c1c7d1",
-    //       pointHighlightFill: "#fff",
-    //       pointHighlightStroke: "rgba(220,220,220,1)",
-    //       // data: [65, 59, 80, 81, 56, 55, 40]
-          
-         
-    //     },
-    //     {
-    //       label: "Absen",
-    //       fillColor: "rgba(255,34,188,0.9)",
-    //       strokeColor: "rgba(255,34,188,0.8)",
-    //       pointColor: "#3b8bba",
-    //       pointStrokeColor: "rgba(60,141,188,1)",
-    //       pointHighlightFill: "#fff",
-    //       pointHighlightStroke: "rgba(60,141,188,1)",
-    //       //data:
-    //     }
-    //   ]
-    // };
 
     // var areaChartOptions = {
     //   //Boolean - If we should show the scale at all
@@ -334,6 +277,8 @@ $(function () {
     barChart.Bar(barChartData, barChartOptions);
   });
 </script>
+
+
 
 
 @endsection

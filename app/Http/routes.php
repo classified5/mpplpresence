@@ -41,6 +41,9 @@ Route::get('/rekap', ['as' => 'rekap', 'uses' => 'PresenceController@getRekap'])
 
 Route::get('/detail_rekap', ['as' => 'detailrekap', 'uses' => 'PresenceController@detailRekap']);
 
+Route::get('/presence_mahasiswa', ['as' => 'presencemahasiswa', 'uses' => 'PresenceController@presenceMahasiswa']);
+
+Route::get('/detail_presence_mahasiswa', ['as' => 'detailpresencemahsiswa', 'uses' => 'PresenceController@detailPresenceMahasiswa']);
 
 Route::post('/adduser', 'AccountController@CreateAccount');
 Route::post('/edituser', 'AccountController@EditAccount');
