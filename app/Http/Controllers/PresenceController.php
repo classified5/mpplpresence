@@ -234,7 +234,7 @@ class PresenceController extends Controller
 
     	
 
-    	for($i = 1; $i <= 16; $i++){
+    	for($i = 1; $i <= 16; $i++){	
     		$matakuliah[$i] = DB::select(DB::raw("SELECT m.minggu, m.id_user, m.kode, m.status_absen, mk.nama_matkul, u.nama FROM mengambil m, user u, mata_kuliah mk where u.id_user = m.id_user and m.kode = mk.kode and m.kode = '".$idkelas."' and m.minggu = '".$i."' and m.id_user = '".$nrp."'"));
     	}
     	for($i = 1; $i <= 18; $i++){

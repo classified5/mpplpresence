@@ -40,10 +40,10 @@
               <td><select class="form-control select2" name="status{{$count}}" style="width: 100%;">
                 @if ($row->status_absen==1)
                   <option selected value="1">Masuk</option>
-                  <option value="0">Absen</option>
+                  <option value="2">Absen</option>
                 @else
                   <option value="1">Masuk</option>
-                  <option selected value="0">Absen</option>
+                  <option selected value="2">Absen</option>
                 @endif
               </select></td>
             </tr>

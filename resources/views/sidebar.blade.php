@@ -31,19 +31,52 @@
         <ul class="sidebar-menu">
        
             <li><a href="{{ route('home') }}"> <i class = "fa  fa-home"></i><span>Home</span></a></li>
+
+            <li><a href="{{ route('home') }}"> <i class = "fa  fa-home"></i><span>Profile</span></a></li>
         
             <!-- Optionally, you can add icons to the links -->
-        
-            <li><a href="{{ route('pilihkelas','input') }}"><i class = "fa  fa-check-square"> </i><span>Input Presensi</span></a></li>
-        
-            <li><a href="{{ route('pilihkelas','report') }}"><i class="fa fa-user"></i><span>Laporan Presensi (Tabel)</span></a></li>
-
-            <li><a href="{{ route('reportpresencegraph') }}"><i class="fa fa-user"></i><span>Laporan Presensi (Grafik)</span></a></li>
+            @if (Auth::user()->id_role == 1)
 
             <li><a href="{{ route('account-manager') }}"><i class="fa fa-user"></i><span>Account Manager</span></a></li>
 
+            <li class="treeview">
+                <a href="#"><span>Presensi</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    
+                     <li><a href="{{ route('rekap') }}"><i class="fa fa-user"></i><span>Rekap</span></a></li>
+                </ul>
+            </li>
+            
+            @endif
 
-            <li><a href="{{ route('rekap') }}"><i class="fa fa-user"></i><span>Rekap</span></a></li>
+            @if (Auth::user()->id_role == 2)
+            
+            <li class="treeview">
+                <a href="#"><span>Presensi</span> <i class="fa fa-angle-left pull-right"></i></a>
+                <ul class="treeview-menu">
+                    <li><a href="{{ route('pilihkelas','input') }}"><i class = "fa  fa-check-square"> </i><span>Input Presensi</span></a></li>
+                     <li><a href="{{ route('pilihkelas','report') }}"><i class="fa fa-user"></i><span>Laporan Presensi</span></a></li>
+                </ul>
+            </li>
+
+            @endif
+
+            @if (Auth::user()->id_role == 3)
+
+            <li><a href="{{ route('presencemahasiswa') }}"><i class="fa fa-user"></i><span>Rekap</span></a></li>
+
+            @endif
+
+            
+        
+           
+<!-- 
+            <li><a href="{{ route('reportpresencegraph') }}"><i class="fa fa-user"></i><span>Laporan Presensi (Grafik)</span></a></li>
+
+            <li><a href="{{ route('account-manager') }}"><i class="fa fa-user"></i><span>Account Manager</span></a></li>
+ -->
+
+           
             <!-- <li><a href="{{ route('adduser') }}"><i class="fa fa-user"></i><span>Add User</span></a></li>
 
             <li><a href="{{ route('edituser') }}"><i class="fa fa-user"></i><span>Edit User</span></a></li>
