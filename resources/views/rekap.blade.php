@@ -10,7 +10,7 @@
             <div class="box-body">
                <div id="example1_wrapper" class="dataTables_wrapper form-inline dt-bootstrap">
                   <div class="row col-sm-12">
-                    <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info">
+                    <table id="example1" class="table table-bordered table-striped dataTable" role="grid" aria-describedby="example1_info" style="font-size:12px">
                       <thead>
                         <tr role="row">
                         <th style="width: 7%;">KODE KELAS</th>

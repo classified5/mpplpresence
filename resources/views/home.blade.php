@@ -235,9 +235,13 @@
 
         @endif -->
 
-
-      
-
+        @if (isset($status))
+        @foreach ($status as $value)
+        <div class="col-lg-8 callout callout-danger" style="margin-left:20%">
+            Anda sudah absen {{$value[0]->jumlah}} kali pada mata kuliah {{$value[0]->nama_matkul}}
+        </div>
+        @endforeach
+        @endif
          <div class="col-lg-3 col-xs-6" style="margin-left:300px;">
         
           <div class="small-box bg-green">

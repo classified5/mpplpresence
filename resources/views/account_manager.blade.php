@@ -31,7 +31,7 @@
             @foreach ($user as $row)
             <tr role="row">
               <td>{{$row->id_user}}</td>
-              <td>{{$row->id_role}}</td>
+              <td>{{$row->nama_role}}</td>
               <td>{{$row->nama}}</td>
               <td>{{$row->password}}</td>
               <td>

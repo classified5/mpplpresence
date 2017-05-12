@@ -182,7 +182,7 @@ class PresenceController extends Controller
         $deskripsi= Input::get('deskripsi');
         $mata_kuliah= Input::get('mata_kuliah');
         $minggu= Input::get('minggu');
-        // $tabel = DB::insert( DB::raw("INSERT INTO mengajar VALUES ('','".Auth::user()->id_user."','".$mata_kuliah."','".$tanggal."','".$jam_mulai."','".$jam_selesai."','".$deskripsi."')"));
+        $tabel = DB::insert( DB::raw("INSERT INTO mengajar VALUES ('','".Auth::user()->id_user."','".$mata_kuliah."','".$tanggal."','".$jam_mulai."','".$jam_selesai."','".$deskripsi."')"));
         // dd(Auth::user()->id_user);
 
         $tabel = DB::select( DB::raw("SELECT m.*, u.nama FROM mengambil m, user u WHERE m.kode='".$mata_kuliah."' and m.minggu='".$minggu."' and u.id_user=m.id_user"));
@@ -229,7 +229,7 @@ class PresenceController extends Controller
     }
 
     public function detailPresenceMahasiswa(){
-    	$nrp = '5114100001';
+    	$nrp = Auth::user()->id_user;
     	$idkelas = Input::get('idkelas');
 
     	

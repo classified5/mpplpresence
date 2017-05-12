@@ -38,8 +38,8 @@
                 <tbody>
                 
                 <tr>
-                <td> {{$nama}}</td>
-                  <td>{{ $nrp }}</td>
+                <td> {{$nrp}}</td>
+                  <td>{{ $nama }}</td>
                  @for($i=1; $i<18; $i++)
                   @if($matakuliah[$i] == 0 )
                     <?php
