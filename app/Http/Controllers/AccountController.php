@@ -54,7 +54,7 @@ class AccountController extends Controller
     }
 
     public function ListAccount(){
-    	$tabel = DB::select( DB::raw("SELECT u.*, ur.nama_role FROM user u, user_role ur"));
+    	$tabel = DB::select( DB::raw("SELECT u.*, ur.nama_role FROM user u, user_role ur where u.id_role=ur.id_role"));
         $this->data['user']=$tabel;
     	return view('account_manager', $this->data);
     }
