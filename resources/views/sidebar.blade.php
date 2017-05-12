@@ -32,18 +32,29 @@
        
             <li><a href="{{ route('home') }}"> <i class = "fa  fa-home"></i><span>Home</span></a></li>
 
-            <li><a href="{{ route('home') }}"> <i class = "fa  fa-home"></i><span>Profile</span></a></li>
+            <li><a href="{{ route('home') }}"> <i class = "fa  fa-user"></i><span>Profile</span></a></li>
         
             <!-- Optionally, you can add icons to the links -->
             @if (Auth::user()->id_role == 1)
 
             <li><a href="{{ route('account-manager') }}"><i class="fa fa-user"></i><span>Account Manager</span></a></li>
+            
+           
 
             <li class="treeview">
-                <a href="#"><span>Presensi</span> <i class="fa fa-angle-left pull-right"></i></a>
+
+                <a href="#">
+                    <i class="fa fa-check-square"></i>
+                        <span>Presensi</span> 
+                        <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
+                
+          
+
                 <ul class="treeview-menu">
                     
-                     <li><a href="{{ route('rekap') }}"><i class="fa fa-user"></i><span>Rekap</span></a></li>
+                     <li><a href="{{ route('rekap') }}"><i class="fa fa-bars"></i><span>Rekap</span></a></li>
                 </ul>
             </li>
             
@@ -52,10 +63,15 @@
             @if (Auth::user()->id_role == 2)
             
             <li class="treeview">
-                <a href="#"><span>Presensi</span> <i class="fa fa-angle-left pull-right"></i></a>
+                 <a href="#">
+                    <i class="fa fa-check-square"></i>
+                        <span>Presensi</span> 
+                        <span class="pull-right-container">
+                    <i class="fa fa-angle-left pull-right"></i>
+                </a>
                 <ul class="treeview-menu">
-                    <li><a href="{{ route('pilihkelas','input') }}"><i class = "fa  fa-check-square"> </i><span>Input Presensi</span></a></li>
-                     <li><a href="{{ route('pilihkelas','report') }}"><i class="fa fa-user"></i><span>Laporan Presensi</span></a></li>
+                    <li><a href="{{ route('pilihkelas','input') }}"><i class = "fa  fa-plus-square"> </i><span>Input Presensi</span></a></li>
+                     <li><a href="{{ route('pilihkelas','report') }}"><i class="fa fa-list-ul"></i><span>Laporan Presensi</span></a></li>
                 </ul>
             </li>
 
@@ -63,7 +79,7 @@
 
             @if (Auth::user()->id_role == 3)
 
-            <li><a href="{{ route('presencemahasiswa') }}"><i class="fa fa-user"></i><span>Rekap</span></a></li>
+            <li><a href="{{ route('presencemahasiswa') }}"><i class="fa fa-bars"></i><span>Rekap</span></a></li>
 
             @endif
 

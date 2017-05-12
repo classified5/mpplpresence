@@ -213,7 +213,9 @@ class PresenceController extends Controller
     }
 
     public function presenceMahasiswa(){
-    	$nrp = '5114100001';
+    	// $nrp = '5114100001';
+    	$nrp = Auth::id();
+    	// dd($nrp);
 
     	$kelas = DB::select(Db::raw("SELECT m.kode, mk.nama_matkul FROM mengambil m, mata_kuliah mk where m.id_user = '".$nrp."' and m.kode = mk.kode  GROUP BY m.kode "));
     	
