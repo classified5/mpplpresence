@@ -32,7 +32,7 @@
        
             <li><a href="{{ route('home') }}"> <i class = "fa  fa-home"></i><span>Home</span></a></li>
 
-            <li><a href="{{ route('home') }}"> <i class = "fa  fa-user"></i><span>Profile</span></a></li>
+            <li><a href="{{ route('profil') }}"> <i class = "fa  fa-user"></i><span>Profile</span></a></li>
         
             <!-- Optionally, you can add icons to the links -->
             @if (Auth::user()->id_role == 1)

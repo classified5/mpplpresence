@@ -15,7 +15,7 @@ class ClassController extends Controller
     //
 	public function getClass($id)
 	 {
-	 	$class = DB::select(DB::raw("SELECT * FROM mengajar m, mata_kuliah mk WHERE m.kode=mk.kode and m.id_user='".Auth::user()->id_user."' "));
+	 	$class = DB::select(DB::raw("SELECT * FROM mengajar m, mata_kuliah mk WHERE m.kode=mk.kode and m.id_user='".Auth::user()->id_user."' GROUP BY m.kode"));
 	 	// dd($table);
 	 	//$class = Matakuliah::all();
 	 	$this->data['class']=$class;
