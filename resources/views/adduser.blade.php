@@ -29,9 +29,9 @@
                   <label for="role">Role</label>
                   <select name="role" class='form-control' required>
                     <option value="" disabled selected>Pilih role</option>
-                    <option value="1">Dosen</option>
-                    <option value="2">Mahasiswa</option>
-                    <option value="3">Admin</option>
+                    <option value="2">Dosen</option>
+                    <option value="3">Mahasiswa</option>
+                    <option value="1">Admin</option>
                   </select>
                   
               <!-- /.box-body -->

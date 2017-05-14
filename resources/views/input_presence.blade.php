@@ -15,7 +15,8 @@
   <div class="box-body">
     <form action="{{ url('/detail_presence') }}" method="post">
       <input type="hidden" name="mata_kuliah" value="{{$idkelas}}">
-      <input type="hidden" name="_token" value="{{ csrf_token() }}">
+      <!-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> -->
+      {{csrf_field() }}
       <div class="row">
         <div class="col-md-12">
          <div class="form-group">
