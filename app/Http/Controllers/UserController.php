@@ -45,8 +45,9 @@ class UserController extends Controller
 		if(Auth::check()){
 			$this->get_start_weeks();
 			if(Auth::user()->id_role == 3){
-				$notif= DB::select(DB::raw("Select count(m.status_absen) as jumlah, m.kode, mk.nama_matkul from mengambil m, mata_kuliah mk where m.id_user='".Auth::user()->id_user."' and m.status_absen=0 and m.kode=mk.kode group by m.id_user, m.kode"));
+				$notif= DB::select(DB::raw("Select count(m.status_absen) as jumlah, m.kode, mk.nama_matkul from mengambil m, mata_kuliah mk where m.id_user='".Auth::user()->id_user."' and m.status_absen=2 and m.kode=mk.kode group by m.id_user, m.kode"));
 				$count=0;
+				// dd($notif);
 				foreach ($notif as $key => $value) {
 					// 
 					if ($value->jumlah>=3) {
