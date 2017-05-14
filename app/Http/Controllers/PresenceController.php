@@ -182,7 +182,14 @@ class PresenceController extends Controller
         $deskripsi= Input::get('deskripsi');
         $mata_kuliah= Input::get('mata_kuliah');
         $minggu= Input::get('minggu');
-        $tabel = DB::insert( DB::raw("INSERT INTO mengajar VALUES ('','".Auth::user()->id_user."','".$mata_kuliah."','".$tanggal."','".$jam_mulai."','".$jam_selesai."','".$deskripsi."')"));
+
+        $tabel = DB::select( DB::raw("SELECT id_mengajar FROM `mengajar` WHERE id_user='".Auth::user()->id_user."' and kode='".$mata_kuliah."' and minggu='".$minggu."' "));
+        if ($tabel==null) 
+            $tabel = DB::insert( DB::raw("INSERT INTO mengajar VALUES ('','".Auth::user()->id_user."','".$mata_kuliah."','".$tanggal."','".$jam_mulai."','".$jam_selesai."','".$deskripsi."','".$minggu."')"));
+        else{
+            // dd($tabel[0]->id_mengajar);
+            $tabel = DB::update( DB::raw("UPDATE mengajar SET tanggal='".$tanggal."' , jam_masuk='".$jam_mulai."' , jam_keluar='".$jam_selesai."' , deskripsi_perkuliahan='".$deskripsi."' WHERE id_mengajar='".$tabel[0]->id_mengajar."'"));
+        }
         // dd(Auth::user()->id_user);
 
         $tabel = DB::select( DB::raw("SELECT m.*, u.nama FROM mengambil m, user u WHERE m.kode='".$mata_kuliah."' and m.minggu='".$minggu."' and u.id_user=m.id_user"));

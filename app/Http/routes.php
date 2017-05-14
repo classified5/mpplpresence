@@ -50,3 +50,5 @@ Route::post('/edituser', 'AccountController@EditAccount');
 Route::post('/edituserYes', 'AccountController@EditAccountYes');
 Route::post('/deleteuser','AccountController@DeleteAccount');
 Route::get('/account-manager', ['as' => 'account-manager', 'uses' => 'AccountController@ListAccount']);
+
+Route::get('/profil', function(){ return view('profil');});

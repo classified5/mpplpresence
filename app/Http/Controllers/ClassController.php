@@ -15,9 +15,12 @@ class ClassController extends Controller
     //
 	public function getClass($id)
 	 {
-	 	$class = Matakuliah::all();
+	 	$class = DB::select(DB::raw("SELECT * FROM mengajar m, mata_kuliah mk WHERE m.kode=mk.kode and m.id_user='".Auth::user()->id_user."' "));
+	 	// dd($table);
+	 	//$class = Matakuliah::all();
 	 	$this->data['class']=$class;
 	 	$this->data['id']=$id;
+	 	// $this->data['table']=$table;
 	 	return view('pilih_kelas', $this->data );
 
 	 } 

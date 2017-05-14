@@ -49,7 +49,7 @@ class UserController extends Controller
 				$count=0;
 				foreach ($notif as $key => $value) {
 					// 
-					if ($value->jumlah>=3600) {
+					if ($value->jumlah>=3) {
 						$status[$count]=[(object)array('jumlah' => $value->jumlah, 'kode' => $value->kode, 'nama_matkul' => $value->nama_matkul)];
 						$count+=1;
 						// dd($status);
