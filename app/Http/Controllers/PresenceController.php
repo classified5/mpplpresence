@@ -192,7 +192,7 @@ class PresenceController extends Controller
         }
         // dd(Auth::user()->id_user);
 
-        $tabel = DB::select( DB::raw("SELECT m.*, u.nama FROM mengambil m, user u WHERE m.kode='".$mata_kuliah."' and m.minggu='".$minggu."' and u.id_user=m.id_user"));
+        $tabel = DB::select( DB::raw("SELECT m.*, u.nama FROM mengambil m, user u WHERE m.kode='".$mata_kuliah."' and u.id_user=m.id_user GROUP BY u.id_user"));
         $this->data['user']=$tabel;
         $this->data['minggu']=$minggu;
         // dd($tabel);
@@ -205,7 +205,11 @@ class PresenceController extends Controller
         for ($i=1; $i <=$count ; $i++) { 
             $id_mengambil= Input::get('id_mengambil'.$i.'');
             $status_absen= Input::get('status'.$i.'');
-            $tabel = DB::update( DB::raw("UPDATE mengambil set status_absen='".$status_absen."' WHERE id_mengambil='".$id_mengambil."'"));
+            $id_user= Input::get('id_user'.$i.'');
+            $mata_kuliah= Input::get('mata_kuliah');
+            $minggu= Input::get('minggu');
+            $tabel = DB::insert( DB::raw("INSERT INTO mengambil VALUES ('','".$id_user."','".$mata_kuliah."','".$minggu."','".$status_absen."')"));
+            // $tabel = DB::update( DB::raw("UPDATE mengambil set status_absen='".$status_absen."' WHERE id_mengambil='".$id_mengambil."'"));
         }
         
         $mata_kuliah= Input::get('mata_kuliah');

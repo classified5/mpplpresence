@@ -33,18 +33,19 @@
             <tr role="row" class="odd">
               <?php $count++;?>
               <td class="sorting_1">{{$row->id_user}}</td>
+              <input type="hidden" name="minggu" value="{{$minggu}}">
               <input type="hidden" name="mata_kuliah" value="{{$row->kode}}">
               <input type="hidden" name="id_mengambil{{$count}}" value="{{$row->id_mengambil}}">
               <input type="hidden" name="id_user{{$count}}" value="{{$row->id_user}}">
               <td>{{$row->nama}}</td>
               <td><select class="form-control select2" name="status{{$count}}" style="width: 100%;">
-                @if ($row->status_absen==1)
+
                   <option selected value="1">Masuk</option>
                   <option value="2">Absen</option>
-                @else
-                  <option value="1">Masuk</option>
-                  <option selected value="2">Absen</option>
-                @endif
+
+<!--                   <option value="1">Masuk</option>
+                  <option selected value="2">Absen</option> -->
+
               </select></td>
             </tr>
             @endforeach
