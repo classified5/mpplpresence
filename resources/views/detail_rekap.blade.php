@@ -21,7 +21,7 @@
                         <th >4</th>
                         <th >5</th>
                         <th >6</th>
-                        <th >4</th>
+                        
                         <th >7</th>
                         <th >8</th>
                         <th >9</th>
@@ -49,9 +49,9 @@
                     for($i=2; $i<count($key); $i++){
                       
                       if($key[$i] == 1) echo '<td> Hadir</td>';
-                      else echo '<td> Absen </td>'; 
+                      else echo '<td style="color:red; "> Absen </td>'; 
                     }           
-                    for($k=$i;$k<=18;$k++){
+                    for($k=$i;$k<18;$k++){
                       echo '<td></td>';
                     } 
                     

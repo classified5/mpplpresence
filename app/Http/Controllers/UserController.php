@@ -90,12 +90,12 @@ class UserController extends Controller
     	$tabel = DB::select( DB::raw("SELECT * FROM user where id_user='".Auth::user()->id_user."'"));
     	$this->data['user']=$tabel;
     	if (Auth::user()->id_role==3) {
-    		$tabel = DB::select( DB::raw("SELECT mk.* from mata_kuliah mk, mengambil m WHERE id_user='".Auth::user()->id_user."' GROUP BY mk.kode"));
+    		$tabel = DB::select( DB::raw("SELECT mk.* from mata_kuliah mk, mengambil m WHERE id_user='".Auth::user()->id_user."' and m.kode = mk.kode GROUP BY mk.kode"));
     		$this->data['mata_kuliah']=$tabel;
-    		// dd('aa');
+    		// dd($this->data['mata_kuliah']);
     	}
     	else if (Auth::user()->id_role==2) {
-    		$tabel = DB::select( DB::raw("SELECT mk.* from mata_kuliah mk, mengajar m WHERE id_user='".Auth::user()->id_user."' GROUP BY mk.kode "));
+    		$tabel = DB::select( DB::raw("SELECT mk.* from mata_kuliah mk, mengajar m WHERE id_user='".Auth::user()->id_user."' and m.kode = mk.kode GROUP BY mk.kode "));
     		$this->data['mata_kuliah']=$tabel;
     	}
     	return view('profil', $this->data);

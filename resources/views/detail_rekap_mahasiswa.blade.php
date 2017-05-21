@@ -21,7 +21,7 @@
                         <th >4</th>
                         <th >5</th>
                         <th >6</th>
-                        <th >4</th>
+                        
                         <th >7</th>
                         <th >8</th>
                         <th >9</th>
@@ -41,21 +41,23 @@
                 <td> {{$nrp}}</td>
                   <td>{{ $nama }}</td>
                  @for($i=1; $i<18; $i++)
+                 
                   @if($matakuliah[$i] == 0 )
                     <?php
                      echo '<td> </td>';
                      continue; ?>
-                    @endif
-                  
-                  <?php          
+                    
+                  @endif
+                            
                    
                       
-                      if($matakuliah[$i][0]->status_absen == 1) echo '<td> Hadir</td>';
-                      else echo '<td> Absen </td>'; 
+                      @if($matakuliah[$i][0]->status_absen == 1) <td> Hadir</td>
+                      @else <td style="color:red;"> Absen </td> 
                        
+                      @endif
                     
                   
-                  ?>
+                  
                    @endfor
 
                    </tr>
